@@ -439,6 +439,7 @@ fu! ctrlp#addfile(ch, file)
 	cal s:BuildPrompt(1)
 endf
 
+
 fu! s:UserCmd(lscmd)
 	let [path, lscmd] = [s:dyncwd, a:lscmd]
 	let do_ign =
@@ -454,6 +455,7 @@ fu! s:UserCmd(lscmd)
 	if (has('win32') || has('win64')) && match(&shell, 'sh') != -1
 		let path = tr(path, '\', '/')
 	en
+  let g:lscmd = lscmd
 	if s:usrcmdasync && v:version >= 800 && exists('*job_start')
 		if exists('s:job')
 			call job_stop(s:job)
